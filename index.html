@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+        <title>РАБОТАЙ БЛИН БЛИНСКИЙ</title>
+        <style>
+    .centered {
+      position: fixed;
+      top: 40%;
+      left: 80%;
+      width: 600px;
+      height:200px;
+      margin: -100px 0 0 -300px;
+          }
+    .dorova {      
+      margin-left: -8px;
+      margin-top: -8px;
+      position: absolute;
+      width: 100%;
+      height:100%;
+        background-image: url(%D1%80%D0%B8%D0%BA.png)
+      }
+  </style>
+	   
+	    
+	    
+	</head>
+	<body>
+        <div class="dorova">
+		  <div class="centered">
+		    <input class="inputText" id="inputText" type="text" placeholder="Введите логическую формулу" required/>
+		    <button class="submitButton" id="checkButton" onclick="start()">Проверить на СДНФ</button>
+		    <a сlass="submitButton" href="quest.html">Тестовый режим</a>
+            </div>
+        </div>
+	    <script src="script.js"></script>
+	</body>
+</html>

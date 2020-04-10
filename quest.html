@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    
+	     <title>НУКА НУКА ЧЕГО ТЫ ЗНАЕШЬ</title>
+        <style>
+	  
+             .centered {
+      position: fixed;
+          }
+            .dorova {      
+      margin-left: -8px;
+      margin-top: -8px;
+      position: absolute;
+      width: 100%;
+      height:100%;
+      background-image: url(%D0%BA%D1%83%D1%80%D0%BE%D1%87%D0%BA%D0%B0.png);
+      background-repeat: no-repeat;
+      background-size: 1540px 866px;
+      }
+  </style>
+	</head>
+	<body>
+        <div class="dorova">
+            <div class="centered">
+	    <div id="questSection">
+	        <div id="question">
+	            <span class="title">Это СДНФ?</span>
+	            <span id="formula"></span>
+	        </div>
+
+	        <form id="answer">
+	        	<div class="option">
+	            	<input type="radio" id="true" name="radio" class="radio" checked="true">
+	            	<label for="true" id="trueLabel">да</label>
+	            </div>
+	            <div class="option">
+	            	<input type="radio" id="false" name="radio" class="radio">
+	            	<label for="false" id="falseLabel">нет</label>
+	            </div>
+                
+	        </form>
+
+	        <button class="button" id="confirmButton" onclick="confirm()"><span>Подтвердить</span></button>
+	        <button class="button" id="nextButton" onclick="next()"><span>Следующий</span></button>
+	    </div>
+	    
+	    <div id="resultSection">
+	        <span class="title">Пока что только </span>
+	        <span id="score"></span>
+	        <button class="button"><a href="index.html">назад</a></button>
+	    </div>
+            
+	    <script src="quest.js"></script>
+                </div>
+            </div>
+	</body>
+</html>
