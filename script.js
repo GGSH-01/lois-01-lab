@@ -10,15 +10,53 @@ const EQUIVALENCE = "~";
 let countAnswer = 0;
 let n = 1;
 
+    function startYes(){
+    userAnswer = 1; 
+    start();
+    }
+
+    function startNo(){
+    userAnswer = 0; 
+    start();
+    }
+
 function start() {
     var input = document.getElementById("inputText").value;
-
-    if (checkSdnf(input)) {
-        alert("СДНФ");
-    } else {
-        alert("не СДНФ");
+    
+    answerFirstTask = checkValidation(input);
+    if (input == ""){
+        alert("Пустая строка!");
+    }
+    else{
+        if (userAnswer == answerFirstTask){
+            if (checkSdnf(input)) {
+                alert("СДНФ");
+            } 
+            else {
+                alert("не СДНФ");
+            }
+        }
+        else{
+            alert("не СДНФ");
+        }
     }
 }
+
+function checkValidation(input) 
+	{
+		var constOrAtom = input.match(/^[A-Z0-1]{1}$/);
+		if(constOrAtom != null) answerFirstTask = 1;			
+		else 
+		{	
+			var oldFormula = input;
+			input = input.replace(/(\([A-Z0-1]{1}([&\|~]|(->))[A-Z0-1]{1}\))|(\(![A-Z0-1]\))/g, "1");
+		
+			if(oldFormula != input)
+				checkValidation(input);
+			else answerFirstTask = 0;
+		}
+		return answerFirstTask;
+	}
 
 function checkSdnf(input) {
     if (checkFarmulaAtom(input)) {
@@ -53,11 +91,14 @@ function checkSdnf(input) {
     return allElementsUsage && !checkForDuplicatesDisjunctions(disjunctions);
 }
 
+
+
 function checkFarmulaAtom(input) {
     if (input.match(/^\([A-Z]\)$/) !== null){
        return true;
       }
 }
+
 
 function checkForSingleLiteral(input) {
     if (input.match(/^(\(\!)?[A-Z](\))?$/) !== null) {
@@ -127,7 +168,7 @@ function deleteExtraBrackets(element, index, inputArray) {
 }
 
 function getElementSetFromFormula(input) {
-    var atom = "([A-Z])";
+    var atom = "[A-Z0-1]{1}";
     atom = new RegExp(atom, GLOBAL);
     var results = input.match(atom) || [];
     var uniqueAtom = results.filter(function (symbol, index) {
